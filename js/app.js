@@ -1,1 +1,3 @@
-console.log("js connected")
+const searchbutton=()=>{
+console.log("buton test")
+}
