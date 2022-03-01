@@ -18,8 +18,14 @@ const searchbutton=()=>{
 }
 
 const phoneResult =(phones)=>{
-
-const the20Result = phones.slice(0, 20);
+if(phones == ""){
+  console.log("ball")
+  const h4 = document.createElement("h4");
+  h4.innerText=`Sorry, we didn't find any phone`;
+  resultContainer.appendChild(h4);
+}
+else{
+  const the20Result = phones.slice(0, 20);
 for(const phone of the20Result){
 const div = document.createElement("div");
 div.classList.add("col-lg-4");
@@ -33,8 +39,9 @@ div.innerHTML=`
           <a href="#" onclick="seeDetailsbutton('${phone.slug}')" class="btn btn-primary">See Details</a>
         </div>
       </div>
-`
+`;
 resultContainer.appendChild(div);
+}
 }
 }
 // see details ..............................................................................
@@ -61,7 +68,7 @@ const seeDetailsbox =(allinfo)=>{
               <p class="card-text"><b>Display Size:</b> ${allinfo.mainFeatures.displaySize}</p>
               <p class="card-text"><b>Memory:</b> ${allinfo.mainFeatures.memory}</p>
               <p class="card-text"><b>Storage:</b> ${allinfo.mainFeatures.storage}</p>
-              <p class="card-text"><b>Others:</b> <u>Bluetooth:</u> ${allinfo.others.Bluetooth}, <u>GPS:</u> ${allinfo.others.GPS}, <u>NFC:</u> ${allinfo.others.NFC}, <u>Radio:</u> ${allinfo.others.Radio}, <u>USB:</u> ${allinfo.others.USB}, <u>WLAN:</u> ${allinfo.others.WLAN},</p>
+              <p class="card-text"><b>Others:</b> <u>Bluetooth:</u> ${allinfo?.others?.Bluetooth}, <u>GPS:</u> ${allinfo?.others?.GPS}, <u>NFC:</u> ${allinfo?.others?.NFC}, <u>Radio:</u> ${allinfo?.others?.Radio}, <u>USB:</u> ${allinfo?.others?.USB}, <u>WLAN:</u> ${allinfo?.others?.WLAN},</p>
             </div>
           </div>
     `
