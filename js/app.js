@@ -1,7 +1,7 @@
 
 let error =document.getElementById("errormsg");
 const resultContainer =document.getElementById("result-container");
-// search .................................................................................................................
+// search btn .................................................................................................................
 const searchbutton=()=>{
   resultContainer.innerHTML="";
     let input =document.getElementById("inpute-value").value;
@@ -12,14 +12,12 @@ const searchbutton=()=>{
         fetch(`https://openapi.programming-hero.com/api/phones?search=${input}`)
         .then(res => res.json())
         .then(data => phoneResult(data.data))
-        input="";
         error.innerHTML="";
     }
 }
-
+// search result .................................................................................................................
 const phoneResult =(phones)=>{
 if(phones == ""){
-  console.log("ball")
   const h4 = document.createElement("h4");
   h4.innerText=`Sorry, we didn't find any phone`;
   resultContainer.appendChild(h4);
@@ -44,14 +42,14 @@ resultContainer.appendChild(div);
 }
 }
 }
-// see details ..............................................................................
+// see details btn ..............................................................................
 const seeDetailsbutton = (slug)=>{
   error.innerHTML="";
 fetch(`https://openapi.programming-hero.com/api/phone/${slug}`)
         .then(res => res.json())
         .then(data => seeDetailsbox(data.data))
 }
-
+// see details result .................................................................................................................
 const seeDetailsbox =(allinfo)=>{
     const div = document.createElement("div");
     div.classList.add("col-12");
@@ -74,3 +72,5 @@ const seeDetailsbox =(allinfo)=>{
     `
     error.appendChild(div);
 }
+// END-------------------------------------------------------------------------------------------------
+
