@@ -2,22 +2,20 @@
 let error =document.getElementById("errormsg");
 const resultContainer =document.getElementById("result-container");
 
-let spinar = document.getElementById("spinnerid")
-spinar.style.display= "block"
-spinar.style.display= "none"
-
 // search btn .................................................................................................................
 const searchbutton=()=>{
   resultContainer.innerHTML="";
     let input =document.getElementById("inpute-value").value;
     if(input==""){
         error.innerHTML=`<h4>You have to search by name</h4>`;
+        document.getElementById("inpute-value").value="";
     }
     else{
         fetch(`https://openapi.programming-hero.com/api/phones?search=${input}`)
         .then(res => res.json())
         .then(data => phoneResult(data.data))
         error.innerHTML="";
+        document.getElementById("inpute-value").value="";
     }
 }
 // search result .................................................................................................................
@@ -47,6 +45,7 @@ resultContainer.appendChild(div);
 }
 }
 }
+
 // see details btn ..............................................................................
 const seeDetailsbutton = (slug)=>{
   error.innerHTML="";
